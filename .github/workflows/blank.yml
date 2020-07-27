@@ -12,6 +12,6 @@ jobs:
       with:
         username: ${{ github.actor }}
         password: ${{ github.token }}
-        repository: ThierrySans/microblog/microblog
+        repository: thierrysans/microblog/microblog
         registry: docker.pkg.github.com
         tags: latest
