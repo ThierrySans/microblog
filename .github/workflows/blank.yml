@@ -1,0 +1,17 @@
+on: [push]
+
+jobs:
+  build_push_docker_image:
+    runs-on: ubuntu-latest
+    name: Build and push Docker image
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Build and push Docker image to Github Package
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{ github.actor }}
+        password: ${{ github.token }}
+        repository: ThierrySans/microblog/microblog
+        registry: docker.pkg.github.com
+        tags: latest
