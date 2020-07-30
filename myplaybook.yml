@@ -1,0 +1,38 @@
+---
+- name: perform actions on the server
+  hosts: all
+
+  tasks:
+  - name: copy docker-compose.yml on local machine to remote server
+    copy:
+      src: ./docker-compose.yml
+      dest: /home/gaochen8/docker-compose.yml
+    tags: 
+    - scp
+    
+  - name: docker-compose down
+    docker_compose:
+      project_src: /home/gaochen8/
+      state: absent
+    tags: 
+    - down
+
+  - name: docker-compose up
+    docker_compose:
+      project_src: /home/gaochen8/
+      pull: yes
+      state: present
+    tags: 
+    - up
+
+  - name: pull latest image and recreate microblog
+    docker_compose:
+      project_src: /home/gaochen8/
+      services: microblog
+      pull: yes
+      recreate: always
+      state: present
+    tags: 
+    - recreate-hello
+      
+ 
