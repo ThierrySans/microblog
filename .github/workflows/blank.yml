@@ -21,4 +21,4 @@ jobs:
         inventory: |
           cms-weblab.utsc.utoronto.ca ansible_connection=ssh ansible_user=gaochen8 ansible_ssh_pass=${{secrets.SSH_KEY}} 
         options: |
-          --tags "recreate-hello"
+          --tags "recreate-microblog"
