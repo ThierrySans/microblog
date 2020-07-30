@@ -33,6 +33,6 @@
       recreate: always
       state: present
     tags: 
-    - recreate-hello
+    - recreate-microblog
       
  
